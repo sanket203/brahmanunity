@@ -1,5 +1,7 @@
 package com.brahmanunity.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +25,7 @@ public class BasicDetailsModel {
 	private String gender;
 	
 	@Column(name="birthDate")
-	private String birthDate;
+	private Date birthDate;
 	
 	@Column(name="height")
 	private String height;
@@ -35,7 +37,7 @@ public class BasicDetailsModel {
 	private String income;
 	
 	@Column(name="lastLogin")
-	private String lastLogin;
+	private Date lastLogin;
 	
 	@Column(name="addressCount")
 	private int addressCount;
@@ -80,11 +82,11 @@ public class BasicDetailsModel {
 		this.gender = gender;
 	}
 
-	public String getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -112,11 +114,11 @@ public class BasicDetailsModel {
 		this.income = income;
 	}
 
-	public String getLastLogin() {
+	public Date getLastLogin() {
 		return lastLogin;
 	}
 
-	public void setLastLogin(String lastLogin) {
+	public void setLastLogin(Date lastLogin) {
 		this.lastLogin = lastLogin;
 	}
 	

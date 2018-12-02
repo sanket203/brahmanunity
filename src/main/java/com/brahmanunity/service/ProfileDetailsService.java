@@ -6,4 +6,6 @@ import com.brahmanunity.utils.ResponseBuilder;
 public interface ProfileDetailsService {
 
 	public ResponseBuilder validateUser(LoginDetailsDto loginDetailsDto);
+	
+	public ResponseBuilder getLatestProfile(String gender, String pageId);
 }

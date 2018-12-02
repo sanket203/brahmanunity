@@ -1,12 +1,12 @@
 package com.brahmanunity.utils;
 
-import com.brahmanunity.model.LoginDetailsModel;
+import com.brahmanunity.model.MatrimonyLogin;
 
 public class ObjectConvertor {
 	
-	public static LoginDetailsModel convertLoginDetails(com.brahmanunity.pojo.LoginDetailsDto loginPojo) {
-		LoginDetailsModel loginDetailsModel = new LoginDetailsModel();
-		loginDetailsModel.setUserName(loginPojo.getUserName());
+	public static MatrimonyLogin convertLoginDetails(com.brahmanunity.pojo.LoginDetailsDto loginPojo) {
+		MatrimonyLogin loginDetailsModel = new MatrimonyLogin();
+		loginDetailsModel.setUser_name(loginPojo.getUser_name());
 		loginDetailsModel.setPassword(loginPojo.getPassword());
 		return loginDetailsModel;
 	}

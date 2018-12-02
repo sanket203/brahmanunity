@@ -2,7 +2,7 @@ package com.brahmanunity.pojo;
 
 public class LoginDetailsDto {
 
-	private String userName;
+	private String user_name;
 	private String password;
 	private String payment;
 	private String transactionId;
@@ -19,11 +19,11 @@ public class LoginDetailsDto {
 	public void setTransactionId(String transactionId) {
 		this.transactionId = transactionId;
 	}
-	public String getUserName() {
-		return userName;
+	public String getUser_name() {
+		return user_name;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 	public String getPassword() {
 		return password;

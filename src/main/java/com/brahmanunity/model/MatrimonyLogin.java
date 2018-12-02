@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity(name="LoginDetails")
-public class LoginDetailsModel {
+@Entity(name="MatrimonyLogin")
+public class MatrimonyLogin {
 	
 	@Id
 	@GeneratedValue
@@ -14,7 +14,7 @@ public class LoginDetailsModel {
 	private int id;
 	
 	@Column(name="userName")
-	private String userName;
+	private String user_name;
 	
 	@Column(name="password")
 	private String password;
@@ -33,12 +33,12 @@ public class LoginDetailsModel {
 		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUser_name() {
+		return user_name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
 	public String getPassword() {
