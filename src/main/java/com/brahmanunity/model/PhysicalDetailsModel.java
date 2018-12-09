@@ -3,6 +3,7 @@ package com.brahmanunity.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
@@ -10,7 +11,7 @@ import javax.persistence.Id;
 public class PhysicalDetailsModel {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private int id;
 	
@@ -27,7 +28,7 @@ public class PhysicalDetailsModel {
 	private String complexion;
 	 
 	@Column(name="bodyForm")
-	private String bodyfom;
+	private String bodyform;
 	
 	@Column(name="spects")
 	private String spects;
@@ -84,12 +85,12 @@ public class PhysicalDetailsModel {
 		this.complexion = complexion;
 	}
 
-	public String getBodyfom() {
-		return bodyfom;
+	public String getBodyform() {
+		return bodyform;
 	}
 
-	public void setBodyfom(String bodyfom) {
-		this.bodyfom = bodyfom;
+	public void setBodyfom(String bodyform) {
+		this.bodyform = bodyform;
 	}
 
 	public String getSpects() {

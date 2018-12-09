@@ -1,12 +1,12 @@
 package com.brahmanunity.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +42,8 @@ public class ProfileDetailsServiceImpl implements ProfileDetailsService {
 				if (basicDetailsModel != null) {
 					response.setStatus(ResponseMessageConstants.STATUS_200);
 					response.setObject(basicDetailsModel);
+					basicDetailsModel.setLastLogin(new Date());
+					basicDetailsRepository.saveAndFlush(basicDetailsModel);
 				} else {
 					response.setMessage(ResponseMessageConstants.CHECK_USER_NAME_PASSWORD);
 					response.setStatus(ResponseMessageConstants.STATUS_500);
