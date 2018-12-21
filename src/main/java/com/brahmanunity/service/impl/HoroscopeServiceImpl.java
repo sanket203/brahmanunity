@@ -26,12 +26,12 @@ public class HoroscopeServiceImpl implements HoroscopeService {
 				response.setMessage(ex.getMessage());
 				response.setStatus(ResponseMessageConstants.STATUS_500);
 			}
-		return null;
+		return response;
 	}
 
 	@Override
 	public ResponseBuilder getHoroscopeDetails(int candidateId) {
-		// TODO Auto-generated method stub
+		// ResponseBuilder response = 
 		return null;
 	}
 	

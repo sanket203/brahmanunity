@@ -1,7 +1,6 @@
 package com.brahmanunity.service.impl;
 
 import java.util.Date;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.brahmanunity.constants.ResponseMessageConstants;
 import com.brahmanunity.model.BasicDetailsModel;
 import com.brahmanunity.model.MatrimonyLogin;
+import com.brahmanunity.pojo.BasicDetailsDto;
 import com.brahmanunity.pojo.LoginDetailsDto;
 import com.brahmanunity.repository.BasicDetailsRepository;
 import com.brahmanunity.repository.LoginRepository;
@@ -59,8 +59,7 @@ public class UserServiceImpl implements UserService {
 			MatrimonyLogin user = loginRepository.validateUser(loginDetailsModel.getUser_name(),
 					loginDetailsModel.getPassword());
 			if (user != null) {
-				int userId = personalRepository.getUserId(loginDetailsModel.getUser_name());
-				BasicDetailsModel userBasicDetail = basicDetailsRepository.getCandidateDetails(userId);
+				BasicDetailsModel userBasicDetail = basicDetailsRepository.getCandidateDetails(user.getId());
 				if (userBasicDetail != null) {
 					response.setStatus(ResponseMessageConstants.STATUS_200);
 					response.setObject(userBasicDetail);
