@@ -15,7 +15,7 @@ public class FamilyDetailsModel {
 	private int id;
 	
 	@Column(name="candidateId")
-	private int candidateid;
+	private int candidateId;
 	
 	@Column(name="father")
 	private String father;
@@ -34,6 +34,28 @@ public class FamilyDetailsModel {
 	
 	@Column(name="sisterDescription")
 	private String sisterDescription;
+	
+	@Column(name="brothers")
+	private String brothers;
+	
+	public String getBrothers() {
+		return brothers;
+	}
+
+	public void setBrothers(String brothers) {
+		this.brothers = brothers;
+	}
+
+	public String getBrotherDescription() {
+		return brotherDescription;
+	}
+
+	public void setBrotherDescription(String brotherDescription) {
+		this.brotherDescription = brotherDescription;
+	}
+
+	@Column(name="brotherDescription")
+	private String brotherDescription;
 
 	public int getId() {
 		return id;
@@ -43,12 +65,12 @@ public class FamilyDetailsModel {
 		this.id = id;
 	}
 
-	public int getCandidateid() {
-		return candidateid;
+	public int getCandidateId() {
+		return candidateId;
 	}
 
-	public void setCandidateid(int candidateid) {
-		this.candidateid = candidateid;
+	public void setCandidateId(int candidateId) {
+		this.candidateId = candidateId;
 	}
 
 	public String getFather() {

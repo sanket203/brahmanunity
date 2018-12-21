@@ -11,4 +11,7 @@ public interface LoginRepository extends JpaRepository<MatrimonyLogin, Integer> 
 	@Query("SELECT p FROM MatrimonyLogin p WHERE p.user_name = :user_name AND p.password = :password")
     public MatrimonyLogin validateUser(@Param("user_name") String user_name, @Param("password") String password);
 	
+	@Query("SELECT p FROM MatrimonyLogin p WHERE p.user_name = :user_name")
+	public MatrimonyLogin getUser(@Param("user_name") String user_name);
+	
 }

@@ -35,7 +35,7 @@ public class BasicDetailsModel {
 	private String education;
 	
 	@Column(name="income")
-	private String income;
+	private int income;
 	
 	@Column(name="lastLogin")
 	private Date lastLogin;
@@ -107,11 +107,11 @@ public class BasicDetailsModel {
 		this.education = education;
 	}
 
-	public String getIncome() {
+	public int getIncome() {
 		return income;
 	}
 
-	public void setIncome(String income) {
+	public void setIncome(int income) {
 		this.income = income;
 	}
 

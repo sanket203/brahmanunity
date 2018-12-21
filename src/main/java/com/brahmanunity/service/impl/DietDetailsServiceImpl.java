@@ -32,7 +32,7 @@ public class DietDetailsServiceImpl implements DietDetailsService {
 	@Override
 	public ResponseBuilder getDietDetails(int candidateId) {
 		ResponseBuilder response = new ResponseBuilder();
-		/*try {
+		try {
 			  DietDetailsModel dietDetails = dietRepository.getDietDetails(candidateId);
 			  if(dietDetails != null) {
 				  response.setObject(dietDetails);
@@ -43,7 +43,7 @@ public class DietDetailsServiceImpl implements DietDetailsService {
 		} catch(Exception ex) {
 			response.setMessage(ex.getMessage());
 			response.setStatus(ResponseMessageConstants.STATUS_500);
-		}*/
+		}
 		return response;
 	}
 

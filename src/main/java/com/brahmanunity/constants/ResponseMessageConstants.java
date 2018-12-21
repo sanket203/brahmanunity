@@ -8,4 +8,5 @@ public class ResponseMessageConstants {
 	public static final String NO_DATA_AVAILABLE = "Data not available for this section";
 	public static final String NO_DATA_FOUND = "Data does not found for this user";
     public static final String SUCCESS_MESSAGE = "Data added successfully.";
+    public static final String PASSWORD_CHANGE = "Password changes successfully.";
 }

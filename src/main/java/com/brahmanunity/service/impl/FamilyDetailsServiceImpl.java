@@ -32,7 +32,7 @@ public class FamilyDetailsServiceImpl implements FamilyDetailsService{
 	@Override
 	public ResponseBuilder getFamilyDetails(int candidateId) {
 		ResponseBuilder response = new ResponseBuilder();
-		/*try {
+		try {
 			  FamilyDetailsModel familyDetails = familyRepository.getFamilyDetails(candidateId);
 			  if(familyDetails != null) {
 				  response.setObject(familyDetails);
@@ -43,7 +43,7 @@ public class FamilyDetailsServiceImpl implements FamilyDetailsService{
 		} catch(Exception ex) {
 			response.setMessage(ex.getMessage());
 			response.setStatus(ResponseMessageConstants.STATUS_500);
-		}*/
+		}
 		return response;
 	}
 

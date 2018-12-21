@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.brahmanunity.constants.ResponseMessageConstants;
 import com.brahmanunity.model.BasicDetailsModel;
+import com.brahmanunity.model.MatrimonyLogin;
 import com.brahmanunity.model.PersonalDetailsModel;
 import com.brahmanunity.pojo.PersonalDetailsDTO;
 import com.brahmanunity.repository.BasicDetailsRepository;
+import com.brahmanunity.repository.LoginRepository;
 import com.brahmanunity.repository.PersonalDetailsRepository;
 import com.brahmanunity.service.PersonalDetailsService;
 import com.brahmanunity.utils.ObjectConvertor;
@@ -24,6 +26,9 @@ public class PersonalDetailsServicceImpl implements PersonalDetailsService {
 	
 	@Autowired
 	BasicDetailsRepository basicDetailsRepository;
+	
+	@Autowired
+	LoginRepository loginRepository;
 
 	@Override
 	public ResponseBuilder getRecord(int id) {
@@ -61,6 +66,11 @@ public class PersonalDetailsServicceImpl implements PersonalDetailsService {
 				  findById.setLastLogin(new Date());
 				  findById.setAddressCount(55);
 				  basicDetailsRepository.save(findById);
+				  
+				  MatrimonyLogin mLogin = new MatrimonyLogin();
+				  mLogin.setUser_name(personalDetails.getMailId());
+				  mLogin.setPassword("Welcome@123");
+				  loginRepository.save(mLogin);
 			  } 
 			  response.setMessage(ResponseMessageConstants.SUCCESS_MESSAGE);
 			  response.setObject(modifiedData);

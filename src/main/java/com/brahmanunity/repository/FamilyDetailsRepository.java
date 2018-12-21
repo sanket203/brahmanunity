@@ -8,7 +8,7 @@ import com.brahmanunity.model.FamilyDetailsModel;
 
 public interface FamilyDetailsRepository extends JpaRepository<FamilyDetailsModel, Integer>{
 	
-	// @Query("SELECT p FROM FamilyDetails p WHERE p.candidateId= :candidateId")
-	// public FamilyDetailsModel getFamilyDetails(@Param("candidateId") int candidateId);
+	@Query("SELECT p FROM FamilyDetails p WHERE p.candidateId= :candidateId")
+	public FamilyDetailsModel getFamilyDetails(@Param("candidateId") int candidateId);
 
 }

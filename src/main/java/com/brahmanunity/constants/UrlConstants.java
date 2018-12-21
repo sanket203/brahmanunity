@@ -48,7 +48,9 @@ public class UrlConstants {
 	
 	public static final String GET_SERVICE_DETAILS = BASE_URL+"/getServiceDetails/{candidateId}";
 	
+	public static final String LOGOUT = BASE_URL+"/logout";
 	
+	public static final String CHANGE_PASSWORD = BASE_URL+"/changePassword";
 
 }
 
