@@ -45,6 +45,28 @@ public class BasicDetailsModel {
 	
 	@Column(name="addressCount")
 	private int addressCount;
+	
+	@Column(name="registrationStatus")
+	private String status;
+	
+	@Column(name="subscriptionDate")
+	private Date subscriptionDate;
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Date getSubscriptionDate() {
+		return subscriptionDate;
+	}
+
+	public void setSubscriptionDate(Date subscriptionDate) {
+		this.subscriptionDate = subscriptionDate;
+	}
 
 	public int getAddressCount() {
 		return addressCount;

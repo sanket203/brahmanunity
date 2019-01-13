@@ -3,14 +3,17 @@ package com.brahmanunity.service.impl;
 import java.util.Date;
 import java.util.Optional;
 
+import org.springframework.aop.config.AdvisorComponentDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.brahmanunity.constants.ResponseMessageConstants;
+import com.brahmanunity.model.AddressDetailsModel;
 import com.brahmanunity.model.BasicDetailsModel;
 import com.brahmanunity.model.MatrimonyLogin;
 import com.brahmanunity.model.PersonalDetailsModel;
 import com.brahmanunity.pojo.PersonalDetailsDTO;
+import com.brahmanunity.repository.AddressDetailsRepository;
 import com.brahmanunity.repository.BasicDetailsRepository;
 import com.brahmanunity.repository.LoginRepository;
 import com.brahmanunity.repository.PersonalDetailsRepository;
@@ -29,6 +32,9 @@ public class PersonalDetailsServicceImpl implements PersonalDetailsService {
 	
 	@Autowired
 	LoginRepository loginRepository;
+	
+	@Autowired
+	AddressDetailsRepository addressRepository;
 
 	@Override
 	public ResponseBuilder getRecord(int id) {
@@ -64,13 +70,21 @@ public class PersonalDetailsServicceImpl implements PersonalDetailsService {
 				  findById.setGender(modifiedData.getGender());
 				  findById.setCandidateId(modifiedData.getId());
 				  findById.setLastLogin(new Date());
-				  findById.setAddressCount(55);
+				  findById.setAddressCount(50);
 				  basicDetailsRepository.save(findById);
 				  
 				  MatrimonyLogin mLogin = new MatrimonyLogin();
-				  mLogin.setUser_name(personalDetails.getMailId());
+				  mLogin.setUser_name(String.valueOf(personalDetailsDto.getContact()));
 				  mLogin.setPassword("Welcome@123");
 				  loginRepository.save(mLogin);
+				  
+				  AddressDetailsModel address = new AddressDetailsModel();
+				  address.setAddress(personalDetailsDto.getAddress());
+				  address.setContact(personalDetailsDto.getContact());
+				  if(personalDetailsDto.getAlternateNumber() != 0) {
+					  address.setAlternateNumber(personalDetailsDto.getAlternateNumber());
+				  }
+				  addressRepository.save(address);
 			  } 
 			  response.setMessage(ResponseMessageConstants.SUCCESS_MESSAGE);
 			  response.setObject(modifiedData);

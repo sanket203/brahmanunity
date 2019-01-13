@@ -29,6 +29,9 @@ public class HoroscopeDetailsModel {
 	@Column(name="shakha")
 	private String shakha;
 	
+	@Column(name="upshakha")
+	private String upshakha;
+	
 	@Column(name="rashi")
 	private String rashi;
 	
@@ -155,6 +158,14 @@ public class HoroscopeDetailsModel {
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+
+	public String getUpshakha() {
+		return upshakha;
+	}
+
+	public void setUpshakha(String upshakha) {
+		this.upshakha = upshakha;
 	}
 	
 }

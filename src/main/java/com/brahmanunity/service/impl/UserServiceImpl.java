@@ -8,11 +8,9 @@ import org.springframework.stereotype.Service;
 import com.brahmanunity.constants.ResponseMessageConstants;
 import com.brahmanunity.model.BasicDetailsModel;
 import com.brahmanunity.model.MatrimonyLogin;
-import com.brahmanunity.pojo.BasicDetailsDto;
 import com.brahmanunity.pojo.LoginDetailsDto;
 import com.brahmanunity.repository.BasicDetailsRepository;
 import com.brahmanunity.repository.LoginRepository;
-import com.brahmanunity.repository.PersonalDetailsRepository;
 import com.brahmanunity.service.UserService;
 import com.brahmanunity.utils.ObjectConvertor;
 import com.brahmanunity.utils.ResponseBuilder;
@@ -26,9 +24,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	BasicDetailsRepository basicDetailsRepository;
 	
-	@Autowired
-	PersonalDetailsRepository personalRepository;
-
 	@Override
 	public ResponseBuilder changePassword(String emailId, String password) {
 		ResponseBuilder response = new ResponseBuilder();
@@ -75,6 +70,25 @@ public class UserServiceImpl implements UserService {
 			response.setStatus(ResponseMessageConstants.STATUS_500);
 		}
 
+		return response;
+	}
+
+	@Override
+	public ResponseBuilder checkUser(long contact) {
+		ResponseBuilder response = new ResponseBuilder();
+		try {
+			  MatrimonyLogin user = loginRepository.getUser(String.valueOf(contact));
+			  if(user != null) {
+				  BasicDetailsModel candidateDetails = basicDetailsRepository.getCandidateDetails(user.getId());
+				  response.setObject(candidateDetails);
+			  } else {
+				  response.setMessage(ResponseMessageConstants.NO_DATA_AVAILABLE);
+			  }
+			  response.setStatus(ResponseMessageConstants.STATUS_200);
+		} catch(Exception ex) {
+			response.setMessage(ex.getMessage());
+			response.setStatus(ResponseMessageConstants.STATUS_500);
+		}
 		return response;
 	}
 	

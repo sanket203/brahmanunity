@@ -16,5 +16,5 @@ public interface BasicDetailsRepository extends JpaRepository<BasicDetailsModel,
 	
 	@Query("SELECT p FROM BasicDetails p WHERE p.candidateId= :candidateId")
 	public BasicDetailsModel getCandidateDetails(@Param("candidateId") int candidateId);
-
+	
 }

@@ -9,6 +9,6 @@ import com.brahmanunity.model.HoroscopeDetailsModel;
 public interface HoroscopeDetailsRepository extends JpaRepository<HoroscopeDetailsModel, Integer>{
 
 	@Query("SELECT p FROM HoroscopeDetails p WHERE p.candidateId = :candidateId")
-	public HoroscopeDetailsModel getFamilyDetails(@Param("candidateId") int candidateId);
+	public HoroscopeDetailsModel getHoroscopeDetails(@Param("candidateId") int candidateId);
 	
 }

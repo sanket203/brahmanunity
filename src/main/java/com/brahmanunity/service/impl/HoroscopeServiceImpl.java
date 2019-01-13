@@ -31,8 +31,20 @@ public class HoroscopeServiceImpl implements HoroscopeService {
 
 	@Override
 	public ResponseBuilder getHoroscopeDetails(int candidateId) {
-		// ResponseBuilder response = 
-		return null;
+		ResponseBuilder response = new ResponseBuilder();
+		try {
+			  HoroscopeDetailsModel horoscopeDetails = horoscopeRepository.getHoroscopeDetails(candidateId);
+			  if(horoscopeDetails != null) {
+				  response.setObject(horoscopeDetails);
+			  } else {
+				  response.setMessage(ResponseMessageConstants.NO_DATA_AVAILABLE);
+			  }
+			  response.setStatus(ResponseMessageConstants.STATUS_200);
+		} catch(Exception ex) {
+			response.setMessage(ex.getMessage());
+			response.setStatus(ResponseMessageConstants.STATUS_500);
+		}
+		return response;
 	}
 	
 

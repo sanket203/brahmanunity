@@ -54,6 +54,11 @@ public class LoginController {
 		return response;
 	}
 	
-	
+	@GetMapping(UrlConstants.CHECK_USER)
+	public ResponseEntity<ResponseBuilder> checkUserRegistration(@PathVariable("mobile") String mobile) {
+		ResponseBuilder resp = userService.checkUser(Long.parseLong(mobile));
+		ResponseEntity<ResponseBuilder> response = new ResponseEntity<ResponseBuilder>(resp, HttpStatus.OK);
+		return response;
+	}
 	
 }

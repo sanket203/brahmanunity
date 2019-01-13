@@ -19,6 +19,14 @@ public class PersonalDetailsDTO {
 	private String motherTongue;
 	private String aboutMe;
 	private String hobbies;
+	private String address;
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public int getId() {
 		return id;
 	}

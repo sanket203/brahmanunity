@@ -6,6 +6,8 @@ public class UrlConstants {
 	
 	public static final String LOGIN_URL = BASE_URL+"/matrimony/login";
 	
+	public static final String CHECK_USER = BASE_URL+"/checkUser/{mobile}";
+	
 	public static final String GET_LATEST_PROFILES = BASE_URL+"/latestProfile/{gender}/{pageId}";
 	
 	public static final String ADD_PERSONAL_DETAILS = BASE_URL+"/savePersonalDetails";
@@ -47,6 +49,10 @@ public class UrlConstants {
     public static final String SAVE_SERVICE_DETAILS = BASE_URL+"/saveServiceDetails";
 	
 	public static final String GET_SERVICE_DETAILS = BASE_URL+"/getServiceDetails/{candidateId}";
+	
+    public static final String SAVE_EXPECTATION_DETAILS = BASE_URL+"/saveExpectationDetails";
+	
+	public static final String GET_EXPECTATION_DETAILS = BASE_URL+"/getExpectationDetails/{candidateId}";
 	
 	public static final String LOGOUT = BASE_URL+"/logout";
 	
