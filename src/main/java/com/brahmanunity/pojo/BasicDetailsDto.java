@@ -1,5 +1,7 @@
 package com.brahmanunity.pojo;
 
+import java.util.Date;
+
 public class BasicDetailsDto {
 	
 	private long id;
@@ -12,7 +14,34 @@ public class BasicDetailsDto {
 	private String income;
 	private String lastLogin;
 	private int addressCount;
-	
+	private Date subscriptionDate;
+	private String payment;
+    private String transactionId;
+    
+	public Date getSubscriptionDate() {
+		return subscriptionDate;
+	}
+
+	public void setSubscriptionDate(Date subscriptionDate) {
+		this.subscriptionDate = subscriptionDate;
+	}
+
+	public String getPayment() {
+		return payment;
+	}
+
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+
+	public String getTransactionId() {
+		return transactionId;
+	}
+
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
+	}
+
 	public int getAddressCount() {
 		return addressCount;
 	}

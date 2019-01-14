@@ -46,18 +46,29 @@ public class BasicDetailsModel {
 	@Column(name="addressCount")
 	private int addressCount;
 	
-	@Column(name="registrationStatus")
-	private String status;
-	
 	@Column(name="subscriptionDate")
 	private Date subscriptionDate;
 	
-	public String getStatus() {
-		return status;
+	@Column(name="payment")
+	private String payment;
+	
+	@Column(name="transactionId")
+    private String transactionId;
+	
+	public String getPayment() {
+		return payment;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+
+	public String getTransactionId() {
+		return transactionId;
+	}
+
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
 	}
 
 	public Date getSubscriptionDate() {

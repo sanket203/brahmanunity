@@ -23,12 +23,7 @@ public class MatrimonyLogin {
 	@Column(name="password")
 	private String password;
 	
-	@Column(name="payment")
-	private String payment;
 	
-	@Column(name="transactionId")
-    private String transactionId;
-
 	public int getId() {
 		return id;
 	}
@@ -52,22 +47,5 @@ public class MatrimonyLogin {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getPayment() {
-		return payment;
-	}
-
-	public void setPayment(String payment) {
-		this.payment = payment;
-	}
-
-	public String getTransactionId() {
-		return transactionId;
-	}
-
-	public void setTransactionId(String transactionId) {
-		this.transactionId = transactionId;
-	}
-
 	
 }
