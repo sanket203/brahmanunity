@@ -43,5 +43,7 @@ public class PersonalController {
 		ResponseEntity<ResponseBuilder> response = new ResponseEntity<ResponseBuilder>(respBuild,HttpStatus.OK);
 		return response;
 	}
+	
+	
 
 }

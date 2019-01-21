@@ -9,4 +9,6 @@ public class ResponseMessageConstants {
 	public static final String NO_DATA_FOUND = "Data does not found for this user";
     public static final String SUCCESS_MESSAGE = "Data added successfully.";
     public static final String PASSWORD_CHANGE = "Password changes successfully.";
+    public static final String FILE_UPLOAD = "File uploaded successfully.";
+    
 }

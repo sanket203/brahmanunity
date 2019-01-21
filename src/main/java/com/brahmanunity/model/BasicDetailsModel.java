@@ -52,9 +52,20 @@ public class BasicDetailsModel {
 	@Column(name="payment")
 	private String payment;
 	
+	@Column(name="status")
+	private String status;
+	
 	@Column(name="transactionId")
     private String transactionId;
 	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public String getPayment() {
 		return payment;
 	}

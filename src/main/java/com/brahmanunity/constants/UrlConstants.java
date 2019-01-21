@@ -57,6 +57,8 @@ public class UrlConstants {
 	public static final String LOGOUT = BASE_URL+"/logout";
 	
 	public static final String CHANGE_PASSWORD = BASE_URL+"/changePassword";
+	
+	public static final String SAVE_PHOTOS = BASE_URL+"/uploadFiles";
 
 }
 

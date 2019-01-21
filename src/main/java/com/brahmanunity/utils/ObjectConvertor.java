@@ -28,7 +28,7 @@ public class ObjectConvertor {
         	personalDetails.setId(personalDetailsDto.getId());
         }
         try {
-        	SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
+        	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
             Date dateTime = formatter.parse(personalDetailsDto.getBirthDate());
     		personalDetails.setBirthDate(dateTime);
         }  catch (ParseException e) {
@@ -57,7 +57,7 @@ public class ObjectConvertor {
         	personalDetails.setId(personalDetailsDto.getId());
         }
         try {
-        	SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
+        	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 			String format = formatter.format(personalDetailsDto.getBirthDate().getTime());
 			personalDetails.setBirthDate(format);
         }  catch (Exception e) {
