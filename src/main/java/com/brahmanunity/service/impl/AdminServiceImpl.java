@@ -1,16 +1,16 @@
 package com.brahmanunity.service.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.brahmanunity.constants.ResponseMessageConstants;
 import com.brahmanunity.model.BasicDetailsModel;
 import com.brahmanunity.model.MatrimonyLogin;
-import com.brahmanunity.pojo.LoginDetailsDto;
 import com.brahmanunity.repository.BasicDetailsRepository;
 import com.brahmanunity.repository.LoginRepository;
 import com.brahmanunity.service.AdminService;
-import com.brahmanunity.utils.ObjectConvertor;
 import com.brahmanunity.utils.ResponseBuilder;
 
 @Service
@@ -42,6 +42,8 @@ public class AdminServiceImpl implements AdminService {
 		ResponseBuilder response = new ResponseBuilder();
 		try {
 			  basicDetails.setAddressCount(50);
+			  basicDetails.setStatus("Active");
+			  basicDetails.setSubscriptionDate(new Date());
 			  basicRepository.save(basicDetails);
 			  response.setMessage(ResponseMessageConstants.SUCCESS_MESSAGE);
 			  response.setStatus(ResponseMessageConstants.STATUS_200);

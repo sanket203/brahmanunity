@@ -108,18 +108,18 @@ public class AddressDetailsServiceImpl implements AddressDetailsService {
 		    		  addressTakenRepository.save(addressTaken);
 	    		  }
 	    		  userDetails.setAddressCount(userDetails.getAddressCount() - 1);
+	    		  if(userDetails.getAddressCount() == 0) {
+	    			  userDetails.setStatus("Inactive");
+	    		  }
 	    		  basicDetailsRepository.save(userDetails);
-	    		  //TODO: reduce address count and entry in address taken profile.
 		    	  response.setObject(alladdressDetails);
 		    	  response.setStatus(ResponseMessageConstants.STATUS_200);
 	    	  }
 	    } catch(Exception ex) {
 	    	response.setMessage(ex.getMessage());
 	    	response.setStatus(ResponseMessageConstants.STATUS_500);
-	    	
 	    }
 	    return response;
-		
 	}
 
 }

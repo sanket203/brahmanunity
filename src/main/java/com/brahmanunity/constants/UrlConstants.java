@@ -10,6 +10,8 @@ public class UrlConstants {
 	
 	public static final String GET_LATEST_PROFILES = BASE_URL+"/latestProfile/{gender}/{pageId}";
 	
+	public static final String GET_PROFILE_ADDRESS = BASE_URL+"/getProfileAddress/{candidateId}/{profileId}/{isAddressTaken}";
+	
 	public static final String ADD_PERSONAL_DETAILS = BASE_URL+"/savePersonalDetails";
 	
 	public static final String GET_PERSONAL_DETAILS = BASE_URL+"/getPersonalDetails/{candidateId}";
@@ -58,7 +60,11 @@ public class UrlConstants {
 	
 	public static final String CHANGE_PASSWORD = BASE_URL+"/changePassword";
 	
-	public static final String SAVE_PHOTOS = BASE_URL+"/uploadFiles";
-
+	public static final String SAVE_PHOTOS = BASE_URL+"/uploadFiles";	
+	
+	public static final String GET_USER_TO_ACTIVE = BASE_URL+"/getUser/{contact}";
+	
+	public static final String ACTIVATE_USER = BASE_URL+"/activateUser";
+	
 }
 
