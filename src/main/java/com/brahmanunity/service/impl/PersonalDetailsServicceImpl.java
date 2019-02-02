@@ -62,29 +62,24 @@ public class PersonalDetailsServicceImpl implements PersonalDetailsService {
 		try {
 			  PersonalDetailsModel personalDetails = ObjectConvertor.convertPersonalDetails(personalDetailsDto);
 			  PersonalDetailsModel modifiedData = personalDetailsRepository.save(personalDetails);
-			  if(personalDetails.getId() != 0) {
-				  BasicDetailsModel findById = new BasicDetailsModel();
-				  findById.setName(modifiedData.getFirstName()+" "+modifiedData.getLastName());
-				  findById.setBirthDate(modifiedData.getBirthDate());
-				  findById.setGender(modifiedData.getGender());
-				  findById.setCandidateId(modifiedData.getId());
-				  findById.setLastLogin(new Date());
-				  findById.setAddressCount(50);
-				  basicDetailsRepository.save(findById);
-				  
-				  MatrimonyLogin mLogin = new MatrimonyLogin();
-				  mLogin.setUser_name(String.valueOf(personalDetailsDto.getContact()));
-				  mLogin.setPassword("Welcome@123");
-				  loginRepository.save(mLogin);
-				  
-				  AddressDetailsModel address = new AddressDetailsModel();
-				  address.setAddress(personalDetailsDto.getAddress());
-				  address.setContact(personalDetailsDto.getContact());
-				  if(personalDetailsDto.getAlternateNumber() != 0) {
-					  address.setAlternateNumber(personalDetailsDto.getAlternateNumber());
-				  }
-				  addressRepository.save(address);
-			  } 
+			  
+			  BasicDetailsModel findById = new BasicDetailsModel();
+			  findById.setName(modifiedData.getFirstName()+" "+modifiedData.getLastName());
+			  findById.setBirthDate(modifiedData.getBirthDate());
+			  findById.setGender(modifiedData.getGender());
+			  findById.setCandidateId(modifiedData.getId());
+			  findById.setLastLogin(new Date());
+			  basicDetailsRepository.save(findById);
+			  
+			  AddressDetailsModel address = new AddressDetailsModel();
+			  address.setAddress(personalDetailsDto.getAddress());
+			  address.setContact(personalDetailsDto.getContact());
+			  address.setEmailId(personalDetailsDto.getMailId());
+			  address.setCandidateId(modifiedData.getId());
+			  if(personalDetailsDto.getAlternateNumber() != 0) {
+				  address.setAlternateNumber(personalDetailsDto.getAlternateNumber());
+			  }
+			  addressRepository.save(address);
 			  response.setMessage(ResponseMessageConstants.SUCCESS_MESSAGE);
 			  response.setObject(modifiedData);
 			  response.setStatus(ResponseMessageConstants.STATUS_200);
@@ -95,15 +90,32 @@ public class PersonalDetailsServicceImpl implements PersonalDetailsService {
 		return response;
 	}
 
+
 	@Override
-	public ResponseBuilder updateRecord(PersonalDetailsDTO personalDetailsModel) {
+	public ResponseBuilder deleteRecord(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseBuilder deleteRecord(int id) {
-		// TODO Auto-generated method stub
+	public ResponseBuilder register(PersonalDetailsDTO personalDetailsDto) {
+		ResponseBuilder response = new ResponseBuilder();
+		try {
+			  PersonalDetailsModel personalDetails = ObjectConvertor.convertPersonalDetails(personalDetailsDto);
+			  personalDetailsRepository.save(personalDetails);
+			  
+			  MatrimonyLogin mLogin = new MatrimonyLogin();
+			  mLogin.setUser_name(String.valueOf(personalDetailsDto.getContact()));
+			  mLogin.setPassword("Welcome@123");
+			  loginRepository.save(mLogin);
+			  
+			  response.setMessage(ResponseMessageConstants.REGISTRATION_SUCCESS);
+			  response.setStatus(ResponseMessageConstants.STATUS_200);
+			  
+		} catch (Exception e) {
+			response.setMessage(e.getMessage());
+			response.setStatus(ResponseMessageConstants.STATUS_500);
+		} 
 		return null;
 	}
 

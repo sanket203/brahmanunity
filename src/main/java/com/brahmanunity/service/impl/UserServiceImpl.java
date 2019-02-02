@@ -8,9 +8,13 @@ import org.springframework.stereotype.Service;
 import com.brahmanunity.constants.ResponseMessageConstants;
 import com.brahmanunity.model.BasicDetailsModel;
 import com.brahmanunity.model.MatrimonyLogin;
+import com.brahmanunity.model.PersonalDetailsModel;
 import com.brahmanunity.pojo.LoginDetailsDto;
+import com.brahmanunity.pojo.PersonalDetailsDTO;
 import com.brahmanunity.repository.BasicDetailsRepository;
 import com.brahmanunity.repository.LoginRepository;
+import com.brahmanunity.repository.PersonalDetailsRepository;
+import com.brahmanunity.service.PersonalDetailsService;
 import com.brahmanunity.service.UserService;
 import com.brahmanunity.utils.ObjectConvertor;
 import com.brahmanunity.utils.ResponseBuilder;
@@ -23,6 +27,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	BasicDetailsRepository basicDetailsRepository;
+	
+	@Autowired
+	PersonalDetailsService personalService;
 	
 	@Override
 	public ResponseBuilder changePassword(String emailId, String password) {
@@ -74,17 +81,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public ResponseBuilder checkUser(long contact) {
+	public ResponseBuilder checkUser(PersonalDetailsDTO personalDetailsDto) {
 		ResponseBuilder response = new ResponseBuilder();
 		try {
-			  MatrimonyLogin user = loginRepository.getUser(String.valueOf(contact));
+			  MatrimonyLogin user = loginRepository.getUser(String.valueOf(personalDetailsDto.getContact()));
 			  if(user != null) {
 				  BasicDetailsModel candidateDetails = basicDetailsRepository.getCandidateDetails(user.getId());
 				  response.setObject(candidateDetails);
+				  response.setStatus(ResponseMessageConstants.STATUS_200);
 			  } else {
-				  response.setMessage(ResponseMessageConstants.NO_DATA_AVAILABLE);
+				  response = personalService.register(personalDetailsDto);
 			  }
-			  response.setStatus(ResponseMessageConstants.STATUS_200);
 		} catch(Exception ex) {
 			response.setMessage(ex.getMessage());
 			response.setStatus(ResponseMessageConstants.STATUS_500);

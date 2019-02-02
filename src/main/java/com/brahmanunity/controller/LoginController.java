@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.brahmanunity.constants.UrlConstants;
 import com.brahmanunity.pojo.LoginDetailsDto;
+import com.brahmanunity.pojo.PersonalDetailsDTO;
 import com.brahmanunity.service.ProfileDetailsService;
 import com.brahmanunity.service.UserService;
 import com.brahmanunity.utils.ResponseBuilder;
@@ -54,9 +55,9 @@ public class LoginController {
 		return response;
 	}
 	
-	@GetMapping(UrlConstants.CHECK_USER)
-	public ResponseEntity<ResponseBuilder> checkUserRegistration(@PathVariable("mobile") String mobile) {
-		ResponseBuilder resp = userService.checkUser(Long.parseLong(mobile));
+	@PostMapping(UrlConstants.CHECK_USER)
+	public ResponseEntity<ResponseBuilder> checkUserRegistration(@RequestBody PersonalDetailsDTO personalDetailsDto) {
+		ResponseBuilder resp = userService.checkUser(personalDetailsDto);
 		ResponseEntity<ResponseBuilder> response = new ResponseEntity<ResponseBuilder>(resp, HttpStatus.OK);
 		return response;
 	}

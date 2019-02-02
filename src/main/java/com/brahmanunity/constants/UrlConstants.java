@@ -6,7 +6,7 @@ public class UrlConstants {
 	
 	public static final String LOGIN_URL = BASE_URL+"/matrimony/login";
 	
-	public static final String CHECK_USER = BASE_URL+"/checkUser/{mobile}";
+	public static final String CHECK_USER = BASE_URL+"/checkUser";
 	
 	public static final String GET_LATEST_PROFILES = BASE_URL+"/latestProfile/{gender}/{pageId}";
 	

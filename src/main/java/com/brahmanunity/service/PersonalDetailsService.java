@@ -9,7 +9,7 @@ public interface PersonalDetailsService {
 
 	public ResponseBuilder saveRecord(PersonalDetailsDTO personalDetails);
 	
-	public ResponseBuilder updateRecord(PersonalDetailsDTO personalDetails);
-	
 	public ResponseBuilder deleteRecord(int id);
+	
+	public ResponseBuilder register(PersonalDetailsDTO personalDetails);
 }

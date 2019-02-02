@@ -10,5 +10,6 @@ public class ResponseMessageConstants {
     public static final String SUCCESS_MESSAGE = "Data added successfully.";
     public static final String PASSWORD_CHANGE = "Password changes successfully.";
     public static final String FILE_UPLOAD = "File uploaded successfully.";
+    public static final String REGISTRATION_SUCCESS = "User registered sucessfully";
     
 }

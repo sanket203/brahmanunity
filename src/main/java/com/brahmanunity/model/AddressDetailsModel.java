@@ -28,6 +28,17 @@ public class AddressDetailsModel {
 	
 	@Column(name="alternateNumber")
 	private long alternateNumber;
+	
+	@Column(name="emailId")
+	private String emailId;
+	
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
 
 	public int getId() {
 		return id;

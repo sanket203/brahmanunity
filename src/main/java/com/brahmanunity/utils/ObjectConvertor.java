@@ -43,7 +43,6 @@ public class ObjectConvertor {
         personalDetails.setMiddleName(personalDetailsDto.getMiddleName());
         personalDetails.setLastName(personalDetailsDto.getLastName());
         personalDetails.setHobbies(personalDetailsDto.getHobbies());
-        personalDetails.setMailId(personalDetailsDto.getMailId());
         personalDetails.setMaritalStatus(personalDetailsDto.getMaritalStatus());
         personalDetails.setRegisterBy(personalDetailsDto.getRegisterBy());
         personalDetails.setReligion(personalDetailsDto.getReligion());
@@ -72,7 +71,6 @@ public class ObjectConvertor {
         personalDetails.setMiddleName(personalDetailsDto.getMiddleName());
         personalDetails.setLastName(personalDetailsDto.getLastName());
         personalDetails.setHobbies(personalDetailsDto.getHobbies());
-        personalDetails.setMailId(personalDetailsDto.getMailId());
         personalDetails.setMaritalStatus(personalDetailsDto.getMaritalStatus());
         personalDetails.setRegisterBy(personalDetailsDto.getRegisterBy());
         personalDetails.setReligion(personalDetailsDto.getReligion());

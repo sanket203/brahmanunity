@@ -40,9 +40,6 @@ public class PersonalDetailsModel {
 	@Column(name="gender")
 	private String gender;
 	
-	@Column(name="mailId")
-	private String mailId;
-	
 	@Column(name="registerBy")
 	private String registerBy;
 	
@@ -123,14 +120,6 @@ public class PersonalDetailsModel {
 
 	public void setGender(String gender) {
 		this.gender = gender;
-	}
-
-	public String getMailId() {
-		return mailId;
-	}
-
-	public void setMailId(String mailId) {
-		this.mailId = mailId;
 	}
 
 	public String getRegisterBy() {
