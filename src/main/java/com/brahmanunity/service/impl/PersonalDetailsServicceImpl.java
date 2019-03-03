@@ -1,6 +1,7 @@
 package com.brahmanunity.service.impl;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +64,10 @@ public class PersonalDetailsServicceImpl implements PersonalDetailsService {
 			  PersonalDetailsModel personalDetails = ObjectConvertor.convertPersonalDetails(personalDetailsDto);
 			  PersonalDetailsModel modifiedData = personalDetailsRepository.save(personalDetails);
 			  
-			  BasicDetailsModel findById = new BasicDetailsModel();
+			  BasicDetailsModel findById = basicDetailsRepository.getCandidateDetails(modifiedData.getId());
+			  if(findById == null) {
+				  findById = new BasicDetailsModel();
+			  }
 			  findById.setName(modifiedData.getFirstName()+" "+modifiedData.getLastName());
 			  findById.setBirthDate(modifiedData.getBirthDate());
 			  findById.setGender(modifiedData.getGender());
@@ -71,15 +75,18 @@ public class PersonalDetailsServicceImpl implements PersonalDetailsService {
 			  findById.setLastLogin(new Date());
 			  basicDetailsRepository.save(findById);
 			  
-			  AddressDetailsModel address = new AddressDetailsModel();
-			  address.setAddress(personalDetailsDto.getAddress());
-			  address.setContact(personalDetailsDto.getContact());
-			  address.setEmailId(personalDetailsDto.getMailId());
-			  address.setCandidateId(modifiedData.getId());
-			  if(personalDetailsDto.getAlternateNumber() != 0) {
-				  address.setAlternateNumber(personalDetailsDto.getAlternateNumber());
+			  List<AddressDetailsModel> addresses = addressRepository.getAlladdressDetails(modifiedData.getId());
+			  if(addresses.size()==0) {
+				  AddressDetailsModel address = new AddressDetailsModel();
+				  address.setAddress(personalDetailsDto.getAddress());
+				  address.setContact(personalDetailsDto.getContact());
+				  address.setEmailId(personalDetailsDto.getMailId());
+				  address.setCandidateId(modifiedData.getId());
+				  if(personalDetailsDto.getAlternateNumber() != 0) {
+					  address.setAlternateNumber(personalDetailsDto.getAlternateNumber());
+				  }
+				  addressRepository.save(address);
 			  }
-			  addressRepository.save(address);
 			  response.setMessage(ResponseMessageConstants.SUCCESS_MESSAGE);
 			  response.setObject(modifiedData);
 			  response.setStatus(ResponseMessageConstants.STATUS_200);
@@ -116,7 +123,7 @@ public class PersonalDetailsServicceImpl implements PersonalDetailsService {
 			response.setMessage(e.getMessage());
 			response.setStatus(ResponseMessageConstants.STATUS_500);
 		} 
-		return null;
+		return response;
 	}
 
 

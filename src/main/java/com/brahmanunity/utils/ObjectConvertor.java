@@ -7,9 +7,11 @@ import java.util.Date;
 import java.util.List;
 
 import com.brahmanunity.model.AddressDetailsModel;
+import com.brahmanunity.model.BasicDetailsModel;
 import com.brahmanunity.model.MatrimonyLogin;
 import com.brahmanunity.model.PersonalDetailsModel;
 import com.brahmanunity.pojo.AddressTakenDto;
+import com.brahmanunity.pojo.BasicDetailsDto;
 import com.brahmanunity.pojo.PersonalDetailsDTO;
 import com.brahmanunity.pojo.ProfileAddressDto;
 
@@ -29,8 +31,10 @@ public class ObjectConvertor {
         }
         try {
         	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-            Date dateTime = formatter.parse(personalDetailsDto.getBirthDate());
-    		personalDetails.setBirthDate(dateTime);
+        	if(personalDetailsDto.getBirthDate() != null) {
+        		Date dateTime = formatter.parse(personalDetailsDto.getBirthDate());
+        		personalDetails.setBirthDate(dateTime);
+        	}
         }  catch (ParseException e) {
             e.printStackTrace();
         }
@@ -93,5 +97,27 @@ public class ObjectConvertor {
 		profileAddress.setAllAddress(addressList);
 		return profileAddress;
 	}
-
+	
+	public static BasicDetailsDto convertBasicdetailsToBasicDTO(BasicDetailsModel basicDetails) {
+		BasicDetailsDto basicDTO = new BasicDetailsDto();
+		basicDTO.setName(basicDetails.getName());
+		basicDTO.setCandidateId(basicDetails.getCandidateId());
+		basicDTO.setAddressCount(basicDetails.getAddressCount());
+		basicDTO.setEducation(basicDetails.getEducation());
+		basicDTO.setGender(basicDetails.getGender());
+		try {
+        	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+			String dateOfBirth = formatter.format(basicDetails.getBirthDate().getTime());
+			basicDTO.setBirthDate(dateOfBirth);
+			String lastLogin = formatter.format(basicDetails.getLastLogin().getTime());
+			basicDTO.setLastLogin(lastLogin);
+        }  catch (Exception e) {
+            e.printStackTrace();
+        }
+		basicDTO.setHeight(basicDetails.getHeight());
+		basicDTO.setIncome(String.valueOf(basicDetails.getIncome()));
+		basicDTO.setId(basicDetails.getId());
+		return basicDTO;
+	}
+	
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.brahmanunity.constants.ResponseMessageConstants;
 import com.brahmanunity.model.BasicDetailsModel;
 import com.brahmanunity.model.MatrimonyLogin;
+import com.brahmanunity.pojo.BasicDetailsDto;
 import com.brahmanunity.pojo.LoginDetailsDto;
 import com.brahmanunity.pojo.PersonalDetailsDTO;
 import com.brahmanunity.repository.BasicDetailsRepository;
@@ -61,8 +62,9 @@ public class UserServiceImpl implements UserService {
 			if (user != null) {
 				BasicDetailsModel userBasicDetail = basicDetailsRepository.getCandidateDetails(user.getId());
 				if (userBasicDetail != null) {
+					BasicDetailsDto basicDetails = ObjectConvertor.convertBasicdetailsToBasicDTO(userBasicDetail);
 					response.setStatus(ResponseMessageConstants.STATUS_200);
-					response.setObject(userBasicDetail);
+					response.setObject(basicDetails);
 					userBasicDetail.setLastLogin(new Date());
 					basicDetailsRepository.saveAndFlush(userBasicDetail);
 				} else {
