@@ -17,7 +17,25 @@ public class BasicDetailsDto {
 	private Date subscriptionDate;
 	private String payment;
     private String transactionId;
+    private String status;
+    private boolean registered;
     
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public boolean isRegistered() {
+		return registered;
+	}
+
+	public void setRegistered(boolean registered) {
+		this.registered = registered;
+	}
+
 	public Date getSubscriptionDate() {
 		return subscriptionDate;
 	}

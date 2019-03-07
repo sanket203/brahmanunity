@@ -58,6 +58,17 @@ public class BasicDetailsModel {
 	@Column(name="transactionId")
     private String transactionId;
 	
+	@Column(name="registered")
+	private boolean registered;
+	
+	public boolean isRegistered() {
+		return registered;
+	}
+
+	public void setRegistered(boolean registered) {
+		this.registered = registered;
+	}
+
 	public String getStatus() {
 		return status;
 	}

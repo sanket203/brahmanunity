@@ -66,5 +66,7 @@ public class UrlConstants {
 	
 	public static final String ACTIVATE_USER = BASE_URL+"/activateUser";
 	
+	public static final String REGISTER_USER = BASE_URL+"/register/{candidateId}/{isRegistered}";
+	
 }
 

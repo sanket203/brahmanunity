@@ -13,5 +13,7 @@ public interface UserService {
 	public ResponseBuilder validateUser(LoginDetailsDto loginDetailsDto);
 	
 	public ResponseBuilder checkUser(PersonalDetailsDTO personalDetailsDto);
+	
+	public ResponseBuilder registration(boolean isRegistered, long candidateId);
 
 }

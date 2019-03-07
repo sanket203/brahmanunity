@@ -62,4 +62,13 @@ public class LoginController {
 		return response;
 	}
 	
+	@PostMapping(UrlConstants.REGISTER_USER)
+	public ResponseEntity<ResponseBuilder> registerUser(@PathVariable("candidateId") String candidateId,
+			                                            @PathVariable("isRegistered") boolean isRegistered) {
+		long candidate = Long.parseLong(candidateId);
+		ResponseBuilder response = userService.registration(isRegistered, candidate);
+		ResponseEntity<ResponseBuilder> resp = new ResponseEntity<ResponseBuilder>(response,HttpStatus.OK);
+		return resp;
+	}
+	
 }

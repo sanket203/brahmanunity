@@ -98,6 +98,23 @@ public class UserServiceImpl implements UserService {
 		}
 		return response;
 	}
-	
 
+	@Override
+	public ResponseBuilder registration(boolean isRegistered, long candidateId) {
+		ResponseBuilder response = new ResponseBuilder();
+		try {
+			  BasicDetailsModel basicDetails = basicDetailsRepository.getCandidateDetails((int)candidateId);
+			  if(basicDetails != null) {
+				  basicDetails.setRegistered(isRegistered);
+				  basicDetailsRepository.save(basicDetails);
+				  response.setMessage(ResponseMessageConstants.SUCCESS_MESSAGE);
+				  response.setStatus(ResponseMessageConstants.STATUS_200);
+			  }
+		} catch(Exception ex) {
+			response.setMessage(ex.getMessage());
+			response.setStatus(ResponseMessageConstants.STATUS_500);
+		}
+		
+		return response;
+	}
 }

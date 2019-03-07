@@ -20,7 +20,14 @@ public class PersonalDetailsDTO {
 	private String aboutMe;
 	private String hobbies;
 	private String address;
+	private String password;
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getAddress() {
 		return address;
 	}

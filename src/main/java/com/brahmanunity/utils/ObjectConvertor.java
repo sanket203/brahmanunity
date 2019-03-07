@@ -61,8 +61,10 @@ public class ObjectConvertor {
         }
         try {
         	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-			String format = formatter.format(personalDetailsDto.getBirthDate().getTime());
-			personalDetails.setBirthDate(format);
+        	if(personalDetailsDto.getBirthDate() != null) {
+        		String format = formatter.format(personalDetailsDto.getBirthDate().getTime());
+    			personalDetails.setBirthDate(format);
+        	}
         }  catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,16 +109,22 @@ public class ObjectConvertor {
 		basicDTO.setGender(basicDetails.getGender());
 		try {
         	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-			String dateOfBirth = formatter.format(basicDetails.getBirthDate().getTime());
-			basicDTO.setBirthDate(dateOfBirth);
-			String lastLogin = formatter.format(basicDetails.getLastLogin().getTime());
-			basicDTO.setLastLogin(lastLogin);
+        	if(basicDetails.getBirthDate() != null) {
+        		String dateOfBirth = formatter.format(basicDetails.getBirthDate().getTime());
+    			basicDTO.setBirthDate(dateOfBirth);
+        	}
+			if(basicDetails.getLastLogin() != null) {
+				String lastLogin = formatter.format(basicDetails.getLastLogin().getTime());
+				basicDTO.setLastLogin(lastLogin);
+			}
         }  catch (Exception e) {
             e.printStackTrace();
         }
 		basicDTO.setHeight(basicDetails.getHeight());
 		basicDTO.setIncome(String.valueOf(basicDetails.getIncome()));
 		basicDTO.setId(basicDetails.getId());
+		basicDetails.setStatus(basicDetails.getStatus());
+		basicDetails.setRegistered(basicDetails.isRegistered());
 		return basicDTO;
 	}
 	

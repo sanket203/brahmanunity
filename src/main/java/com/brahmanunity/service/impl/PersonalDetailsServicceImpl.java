@@ -109,13 +109,20 @@ public class PersonalDetailsServicceImpl implements PersonalDetailsService {
 		ResponseBuilder response = new ResponseBuilder();
 		try {
 			  PersonalDetailsModel personalDetails = ObjectConvertor.convertPersonalDetails(personalDetailsDto);
-			  personalDetailsRepository.save(personalDetails);
+			  PersonalDetailsModel personalModel = personalDetailsRepository.save(personalDetails);
 			  
 			  MatrimonyLogin mLogin = new MatrimonyLogin();
 			  mLogin.setUser_name(String.valueOf(personalDetailsDto.getContact()));
-			  mLogin.setPassword("Welcome@123");
+			  mLogin.setPassword(personalDetailsDto.getPassword());
 			  loginRepository.save(mLogin);
 			  
+			  BasicDetailsModel basicDetails = new BasicDetailsModel();
+			  basicDetails.setName(personalDetailsDto.getFirstName()+" "+personalDetailsDto.getLastName());
+			  basicDetails.setRegistered(false);
+			  basicDetails.setCandidateId(personalModel.getId());
+			  BasicDetailsModel basicDetailsModel = basicDetailsRepository.save(basicDetails);
+			  
+			  response.setObject(basicDetailsModel);
 			  response.setMessage(ResponseMessageConstants.REGISTRATION_SUCCESS);
 			  response.setStatus(ResponseMessageConstants.STATUS_200);
 			  
