@@ -122,6 +122,11 @@ public class PersonalDetailsServicceImpl implements PersonalDetailsService {
 			  basicDetails.setCandidateId(personalModel.getId());
 			  BasicDetailsModel basicDetailsModel = basicDetailsRepository.save(basicDetails);
 			  
+			  AddressDetailsModel address = new AddressDetailsModel();
+			  address.setCandidateId(personalModel.getId());
+			  address.setContact(personalDetailsDto.getContact());
+			  addressRepository.save(address);
+			  
 			  response.setObject(basicDetailsModel);
 			  response.setMessage(ResponseMessageConstants.REGISTRATION_SUCCESS);
 			  response.setStatus(ResponseMessageConstants.STATUS_200);
