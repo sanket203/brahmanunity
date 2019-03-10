@@ -2,7 +2,8 @@ package com.brahmanunity.pojo;
 
 import java.util.List;
 
-public class ProfileAddressDto {
+public class ProfileAddressDto
+ {
 	
 	List<AddressTakenDto> allAddress;
 	private boolean isAddressExist;

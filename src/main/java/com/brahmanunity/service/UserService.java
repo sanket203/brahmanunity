@@ -14,6 +14,6 @@ public interface UserService {
 	
 	public ResponseBuilder checkUser(PersonalDetailsDTO personalDetailsDto);
 	
-	public ResponseBuilder registration(boolean isRegistered, long candidateId);
+	public ResponseBuilder registration(String isRegistered, long candidateId);
 
 }

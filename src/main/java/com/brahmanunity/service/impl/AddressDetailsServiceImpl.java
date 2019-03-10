@@ -91,7 +91,9 @@ public class AddressDetailsServiceImpl implements AddressDetailsService {
 	    	  if(isAddressTaken == false) {
 	    		  AddressTakenModel checkAddress = addressTakenRepository.checkAddress(userId, profileId);
 	    		  if(checkAddress == null) {
-	    			  response.setObject(new Boolean(false));
+	    			  ProfileAddressDto profileAddress = new ProfileAddressDto();
+	    			  profileAddress.setAddressExist(false);
+	    			  response.setObject(profileAddress);
 	    		  } else {
 	    			  alladdressDetails = addressRepository.getAlladdressDetails(profileId);
 	    			  ProfileAddressDto profileAddress = ObjectConvertor.convertAddressModelToAddress(alladdressDetails,true);
@@ -106,14 +108,19 @@ public class AddressDetailsServiceImpl implements AddressDetailsService {
 		    		  addressTaken.setProfileId(profileId);
 		    		  addressTaken.setUserId(userId);
 		    		  addressTakenRepository.save(addressTaken);
+		    		  userDetails.setAddressCount(userDetails.getAddressCount() - 1);
+		    		  if(userDetails.getAddressCount() == 0) {
+		    			  userDetails.setStatus("Inactive");
+		    		  }
+		    		  basicDetailsRepository.save(userDetails);
+		    		  ProfileAddressDto profileAddress = ObjectConvertor.convertAddressModelToAddress(alladdressDetails,true);
+			    	  response.setObject(profileAddress);
+			    	  response.setStatus(ResponseMessageConstants.STATUS_200);
 	    		  }
-	    		  userDetails.setAddressCount(userDetails.getAddressCount() - 1);
-	    		  if(userDetails.getAddressCount() == 0) {
-	    			  userDetails.setStatus("Inactive");
+	    		  else {
+	    			    response.setMessage(ResponseMessageConstants.ADDRESS_LIMIT_EXCEEDED);
+	    		    	response.setStatus(ResponseMessageConstants.STATUS_500);
 	    		  }
-	    		  basicDetailsRepository.save(userDetails);
-		    	  response.setObject(alladdressDetails);
-		    	  response.setStatus(ResponseMessageConstants.STATUS_200);
 	    	  }
 	    } catch(Exception ex) {
 	    	response.setMessage(ex.getMessage());

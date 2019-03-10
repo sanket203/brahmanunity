@@ -127,7 +127,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public ResponseBuilder registration(boolean isRegistered, long candidateId) {
+	public ResponseBuilder registration(String isRegistered, long candidateId) {
 		ResponseBuilder response = new ResponseBuilder();
 		try {
 			  BasicDetailsModel basicDetails = basicDetailsRepository.getCandidateDetails((int)candidateId);

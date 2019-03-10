@@ -59,13 +59,13 @@ public class BasicDetailsModel {
     private String transactionId;
 	
 	@Column(name="registered")
-	private boolean registered;
+	private String registered;
 	
-	public boolean isRegistered() {
+	public String getRegistered() {
 		return registered;
 	}
 
-	public void setRegistered(boolean registered) {
+	public void setRegistered(String registered) {
 		this.registered = registered;
 	}
 

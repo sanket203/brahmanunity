@@ -124,7 +124,8 @@ public class ObjectConvertor {
 		basicDTO.setIncome(String.valueOf(basicDetails.getIncome()));
 		basicDTO.setId(basicDetails.getId());
 		basicDetails.setStatus(basicDetails.getStatus());
-		basicDetails.setRegistered(basicDetails.isRegistered());
+		basicDetails.setRegistered(basicDetails.getRegistered());
+		
 		return basicDTO;
 	}
 	

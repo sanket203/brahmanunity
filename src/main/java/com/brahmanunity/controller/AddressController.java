@@ -1,3 +1,4 @@
+
 package com.brahmanunity.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +47,8 @@ public class AddressController {
 	
 	@GetMapping(UrlConstants.GET_PROFILE_ADDRESS)
 	public ResponseEntity<ResponseBuilder> getProfileAddress(@PathVariable("candidateId") int candidateId,     
-			                                              @PathVariable("profileId") int profileId,
-			                                              @PathVariable("isAddressTaken") boolean isAddressTaken) {
+			                                                 @PathVariable("profileId") int profileId,
+			                                                 @PathVariable("isAddressTaken") boolean isAddressTaken) {
 		ResponseBuilder resp = addressDetailsService.getProfileAddress(candidateId, profileId, isAddressTaken);
 		ResponseEntity<ResponseBuilder> response = new ResponseEntity<ResponseBuilder>(resp,HttpStatus.OK);
 		return response;

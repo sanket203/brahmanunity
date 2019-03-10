@@ -64,7 +64,7 @@ public class LoginController {
 	
 	@PostMapping(UrlConstants.REGISTER_USER)
 	public ResponseEntity<ResponseBuilder> registerUser(@PathVariable("candidateId") String candidateId,
-			                                            @PathVariable("isRegistered") boolean isRegistered) {
+			                                            @PathVariable("isRegistered") String isRegistered) {
 		long candidate = Long.parseLong(candidateId);
 		ResponseBuilder response = userService.registration(isRegistered, candidate);
 		ResponseEntity<ResponseBuilder> resp = new ResponseEntity<ResponseBuilder>(response,HttpStatus.OK);
