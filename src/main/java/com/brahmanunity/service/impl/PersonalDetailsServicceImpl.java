@@ -118,7 +118,7 @@ public class PersonalDetailsServicceImpl implements PersonalDetailsService {
 			  
 			  BasicDetailsModel basicDetails = new BasicDetailsModel();
 			  basicDetails.setName(personalDetailsDto.getFirstName()+" "+personalDetailsDto.getLastName());
-			  basicDetails.setRegistered("Not Registered");
+			  basicDetails.setRegistered("non registered");
 			  basicDetails.setCandidateId(personalModel.getId());
 			  BasicDetailsModel basicDetailsModel = basicDetailsRepository.save(basicDetails);
 			  

@@ -106,6 +106,7 @@ public class UserServiceImpl implements UserService {
 				  BasicDetailsModel candidateDetails = basicDetailsRepository.getCandidateDetails(user.getId());
 				  candidateDetails.setName(personalDetailsDto.getFirstName()+" "+personalDetailsDto.getLastName());
 				  candidateDetails.setLastLogin(new Date());
+				  candidateDetails.setRegistered("non registered");
 				  basicDetailsRepository.save(candidateDetails);
 				  
 				  List<AddressDetailsModel> addresses = addressRepository.getAlladdressDetails(user.getId());
