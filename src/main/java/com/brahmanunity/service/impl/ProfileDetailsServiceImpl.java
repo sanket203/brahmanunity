@@ -1,5 +1,6 @@
 package com.brahmanunity.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import com.brahmanunity.constants.ResponseMessageConstants;
 import com.brahmanunity.model.BasicDetailsModel;
+import com.brahmanunity.pojo.BasicDetailsDto;
 import com.brahmanunity.repository.BasicDetailsRepository;
 import com.brahmanunity.service.ProfileDetailsService;
+import com.brahmanunity.utils.ObjectConvertor;
 import com.brahmanunity.utils.ResponseBuilder;
 
 @Service
@@ -34,8 +37,12 @@ public class ProfileDetailsServiceImpl implements ProfileDetailsService {
 			}
 			List<BasicDetailsModel> latestProfiles = basicDetailsRepository.getLatestProfiles(genderToPass, pageable);
 			if(latestProfiles.size() > 0) {
+				List<BasicDetailsDto> profiles = new ArrayList();
+				for (BasicDetailsModel basicDetail : latestProfiles) {
+					profiles.add(ObjectConvertor.convertBasicdetailsToBasicDTO(basicDetail));
+				}
 				response.setStatus(ResponseMessageConstants.STATUS_200);
-				response.setObject(latestProfiles);
+				response.setObject(profiles);
 			} else {
 				response.setMessage(ResponseMessageConstants.CHECK_USER_NAME_PASSWORD);
 				response.setStatus(ResponseMessageConstants.STATUS_500);

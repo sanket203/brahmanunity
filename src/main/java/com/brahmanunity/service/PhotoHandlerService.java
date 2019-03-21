@@ -8,4 +8,6 @@ public interface PhotoHandlerService {
 	
 	public ResponseBuilder storeFile(MultipartFile[] files, String candidateId);
 	
+	public ResponseBuilder getImageFile(String candidateId);
+	
 }

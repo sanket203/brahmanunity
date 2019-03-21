@@ -19,7 +19,16 @@ public class BasicDetailsDto {
     private String transactionId;
     private String status;
     private String registered;
-    
+    private String imageUrl;
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 	public String getStatus() {
 		return status;
 	}

@@ -68,5 +68,9 @@ public class UrlConstants {
 	
 	public static final String REGISTER_USER = BASE_URL+"/register/{candidateId}/{isRegistered}";
 	
+	public static final String FILE_PATH_URL = "http://localhost:8080/candidatePhotos/";
+	
+	public static final String GET_IMAGES_URL = BASE_URL+"/getImages/{candidateId}";
+	
 }
 

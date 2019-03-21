@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
 					response.setMessage(ResponseMessageConstants.CHECK_USER_NAME_PASSWORD);
 					response.setStatus(ResponseMessageConstants.STATUS_500);
 				}
-			}
+			} 
 		} catch (Exception ex) {
 			response.setMessage(ex.getMessage());
 			response.setStatus(ResponseMessageConstants.STATUS_500);

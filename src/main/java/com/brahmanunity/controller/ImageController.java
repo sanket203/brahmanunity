@@ -3,6 +3,8 @@ package com.brahmanunity.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +25,13 @@ public class ImageController {
         ResponseBuilder resp = fileStorageService.storeFile(files,candidateId);
         ResponseEntity<ResponseBuilder> response = new ResponseEntity<ResponseBuilder>(resp,HttpStatus.OK);
         return response;
+    }
+    
+    @GetMapping(UrlConstants.GET_IMAGES_URL)
+    public ResponseEntity<ResponseBuilder> getUserImages(@PathVariable("candidateId") String candidateId) {
+    	ResponseBuilder resp = fileStorageService.getImageFile(candidateId);
+    	ResponseEntity<ResponseBuilder> response = new ResponseEntity<ResponseBuilder>(resp,HttpStatus.OK);
+    	return response;
     }
 
 
