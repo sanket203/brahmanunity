@@ -36,10 +36,12 @@ public class FamilyDetailsServiceImpl implements FamilyDetailsService{
 			  FamilyDetailsModel familyDetails = familyRepository.getFamilyDetails(candidateId);
 			  if(familyDetails != null) {
 				  response.setObject(familyDetails);
+				  response.setStatus(ResponseMessageConstants.STATUS_200);
 			  } else {
 				  response.setMessage(ResponseMessageConstants.NO_DATA_AVAILABLE);
+				  response.setStatus(ResponseMessageConstants.STATUS_500);
 			  }
-			  response.setStatus(ResponseMessageConstants.STATUS_200);
+			
 		} catch(Exception ex) {
 			response.setMessage(ex.getMessage());
 			response.setStatus(ResponseMessageConstants.STATUS_500);

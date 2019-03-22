@@ -35,11 +35,15 @@ public class ExpectationsServiceImpl implements ExpectationsService {
 		try {
 			  Expectations expectations = expectationRepository.retrieveExpectations(candidateId);
 			  if(expectations != null) {
-				  response.setMessage(ResponseMessageConstants.NO_DATA_AVAILABLE);
-			  } else {
 				  response.setObject(expectations);
+				  response.setStatus(ResponseMessageConstants.STATUS_200);
+				 
+			  } else {
+				  response.setMessage(ResponseMessageConstants.NO_DATA_AVAILABLE);
+				  response.setStatus(ResponseMessageConstants.STATUS_500);
+				
 			  }
-			  response.setStatus(ResponseMessageConstants.STATUS_200);
+			  
 		} catch(Exception ex) {
 			response.setMessage(ex.getMessage());
 			response.setStatus(ResponseMessageConstants.STATUS_500);

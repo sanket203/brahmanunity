@@ -36,10 +36,13 @@ public class DietDetailsServiceImpl implements DietDetailsService {
 			  DietDetailsModel dietDetails = dietRepository.getDietDetails(candidateId);
 			  if(dietDetails != null) {
 				  response.setObject(dietDetails);
+				  response.setStatus(ResponseMessageConstants.STATUS_200);
+				  response.setMessage(ResponseMessageConstants.SUCCESS_MESSAGE);
 			  } else {
 				  response.setMessage(ResponseMessageConstants.NO_DATA_AVAILABLE);
+				  response.setStatus(ResponseMessageConstants.STATUS_500);
 			  }
-			  response.setStatus(ResponseMessageConstants.STATUS_200);
+			 
 		} catch(Exception ex) {
 			response.setMessage(ex.getMessage());
 			response.setStatus(ResponseMessageConstants.STATUS_500);
