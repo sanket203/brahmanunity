@@ -21,6 +21,7 @@ public class ExpectationsServiceImpl implements ExpectationsService {
 		try {
 			  expectationRepository.save(expectations);
 			  response.setMessage(ResponseMessageConstants.SUCCESS_MESSAGE);
+			  response.setStatus(ResponseMessageConstants.STATUS_200);
 		} catch (Exception e) {
 			response.setMessage(e.getMessage());
 			response.setStatus(ResponseMessageConstants.STATUS_500);

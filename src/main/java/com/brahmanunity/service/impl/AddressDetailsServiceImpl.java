@@ -64,7 +64,7 @@ public class AddressDetailsServiceImpl implements AddressDetailsService {
 	public ResponseBuilder getAddressTakenProfiles(int userId, int pageId) {
 		ResponseBuilder response = new ResponseBuilder();
 		try {
-			 PageRequest pageRequest = PageRequest.of(pageId, 10);
+			 PageRequest pageRequest = PageRequest.of(pageId, 5);
 			 Pageable pageable = pageRequest;
 			 List<Integer> profiles = addressTakenRepository.getMyAddressProfiles(userId, pageable);
 			 if(profiles.size() == 0) {
