@@ -132,7 +132,7 @@ public class ObjectConvertor {
 			if (file.exists()) {
 				File[] listFiles = file.listFiles();
 				if(listFiles.length > 0) {
-					imageUrl = UrlConstants.FILE_PATH_URL+basicDetails.getCandidateId()+listFiles[0].getName();
+					imageUrl = UrlConstants.FILE_PATH_URL+basicDetails.getCandidateId()+ResponseMessageConstants.FILE_SEPARATOR+listFiles[0].getName();
 				}
 			}
 			basicDTO.setImageUrl(imageUrl);

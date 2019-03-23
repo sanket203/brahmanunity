@@ -36,10 +36,12 @@ public class HoroscopeServiceImpl implements HoroscopeService {
 			  HoroscopeDetailsModel horoscopeDetails = horoscopeRepository.getHoroscopeDetails(candidateId);
 			  if(horoscopeDetails != null) {
 				  response.setObject(horoscopeDetails);
+				  response.setStatus(ResponseMessageConstants.STATUS_200);
 			  } else {
 				  response.setMessage(ResponseMessageConstants.NO_DATA_AVAILABLE);
+				  response.setStatus(ResponseMessageConstants.STATUS_500);
 			  }
-			  response.setStatus(ResponseMessageConstants.STATUS_200);
+			 
 		} catch(Exception ex) {
 			response.setMessage(ex.getMessage());
 			response.setStatus(ResponseMessageConstants.STATUS_500);
