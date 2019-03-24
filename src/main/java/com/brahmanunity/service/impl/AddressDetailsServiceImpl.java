@@ -119,7 +119,7 @@ public class AddressDetailsServiceImpl implements AddressDetailsService {
 	    		  }
 	    		  else {
 	    			    response.setMessage(ResponseMessageConstants.ADDRESS_LIMIT_EXCEEDED);
-	    		    	response.setStatus(ResponseMessageConstants.STATUS_500);
+	    		    	response.setStatus(ResponseMessageConstants.STATUS_400);
 	    		  }
 	    	  }
 	    } catch(Exception ex) {
