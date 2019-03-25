@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -60,7 +61,7 @@ public class PhotoHandlerServiceImpl implements PhotoHandlerService{
 					sb.append(files[i].getName());
 					imagePathUrls[i] = sb.toString();
 				}
-				response.setObject(imagePathUrls);
+				response.setObject(Arrays.asList(imagePathUrls));
 				response.setStatus(ResponseMessageConstants.STATUS_200);
 				
 			} else {

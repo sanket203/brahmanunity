@@ -6,6 +6,8 @@ public class ResponseMessageConstants {
 	
 	public static final String STATUS_200 = "200";
 	
+	public static final String STATUS_400 = "400";
+	
 	public static final String CHECK_USER_NAME_PASSWORD = "Please check username and password";
 	
 	public static final String NO_DATA_AVAILABLE = "Data not available for this section";
