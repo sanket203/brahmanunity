@@ -30,7 +30,7 @@ public class ProfileDetailsServiceImpl implements ProfileDetailsService {
 		ResponseBuilder response = new ResponseBuilder();
 		String genderToPass = "male";
 		try {
-			PageRequest pageRequest = PageRequest.of(page, 5, Direction.DESC, "lastLogin");
+			PageRequest pageRequest = PageRequest.of(page, 4, Direction.DESC, "lastLogin");
 			Pageable pageable = pageRequest;
 			if(gender.equals(genderToPass)) {
 				genderToPass = "female";

@@ -1,5 +1,7 @@
 package com.brahmanunity.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,8 @@ public class PersonalController {
 	@Autowired
 	PersonalDetailsService personalDetailsService;
 	
+	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+	
 	@PostMapping(UrlConstants.ADD_PERSONAL_DETAILS)
 	public @ResponseBody ResponseEntity<ResponseBuilder> savePersonalDetails(@RequestBody PersonalDetailsDTO personalDetails) {
 		ResponseEntity<ResponseBuilder> response = null;
@@ -32,8 +36,10 @@ public class PersonalController {
 	
 	@GetMapping(UrlConstants.GET_PERSONAL_DETAILS)
 	public @ResponseBody ResponseEntity<ResponseBuilder> getRecord(@PathVariable("candidateId") String id) {
+		LOGGER.info("In Method getRecord");
 		ResponseBuilder respBuild = personalDetailsService.getRecord(Integer.parseInt(id));
 		ResponseEntity<ResponseBuilder> response = new ResponseEntity<ResponseBuilder>(respBuild,HttpStatus.OK);
+		LOGGER.info("Out Method getRecord");
 		return response;
 	}
 	

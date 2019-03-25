@@ -45,7 +45,7 @@ public class ServiceDetailsModel {
 	private String experience;
 	
 	@Column(name="annualIncome")
-	private int annualIncome;
+	private String annualIncome;
 	
 	@Column(name="address")
 	private String address;
@@ -130,11 +130,11 @@ public class ServiceDetailsModel {
 		this.experience = experience;
 	}
 
-	public int getAnnualIncome() {
+	public String getAnnualIncome() {
 		return annualIncome;
 	}
 
-	public void setAnnualIncome(int annualIncome) {
+	public void setAnnualIncome(String annualIncome) {
 		this.annualIncome = annualIncome;
 	}
 

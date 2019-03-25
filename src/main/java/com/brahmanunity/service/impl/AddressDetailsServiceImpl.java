@@ -64,7 +64,7 @@ public class AddressDetailsServiceImpl implements AddressDetailsService {
 	public ResponseBuilder getAddressTakenProfiles(int userId, int pageId) {
 		ResponseBuilder response = new ResponseBuilder();
 		try {
-			 PageRequest pageRequest = PageRequest.of(pageId, 5);
+			 PageRequest pageRequest = PageRequest.of(pageId, 4);
 			 Pageable pageable = pageRequest;
 			 List<Integer> profiles = addressTakenRepository.getMyAddressProfiles(userId, pageable);
 			 if(profiles.size() == 0) {
@@ -119,7 +119,7 @@ public class AddressDetailsServiceImpl implements AddressDetailsService {
 	    		  }
 	    		  else {
 	    			    response.setMessage(ResponseMessageConstants.ADDRESS_LIMIT_EXCEEDED);
-	    		    	response.setStatus(ResponseMessageConstants.STATUS_500);
+	    		    	response.setStatus(ResponseMessageConstants.STATUS_400);
 	    		  }
 	    	  }
 	    } catch(Exception ex) {

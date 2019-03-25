@@ -28,7 +28,7 @@ public class JobDetailsServiceImpl implements JobDetailsService {
 			  if(serviceData != null) {
 				  BasicDetailsModel candidateDetails = basicDetailsRepository.getCandidateDetails(serviceData.getCandidateId());
 				  if(candidateDetails != null) {
-					  if(serviceDetails.getAnnualIncome() != candidateDetails.getIncome()) {
+					  if(! serviceDetails.getAnnualIncome().equals(candidateDetails.getIncome())) {
 						  candidateDetails.setIncome(serviceDetails.getAnnualIncome());
 					  }
 					  basicDetailsRepository.save(candidateDetails);

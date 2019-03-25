@@ -135,6 +135,7 @@ public class UserServiceImpl implements UserService {
 			  if(basicDetails != null) {
 				  basicDetails.setRegistered(isRegistered);
 				  basicDetailsRepository.save(basicDetails);
+				  response.setObject(basicDetails);
 				  response.setMessage(ResponseMessageConstants.SUCCESS_MESSAGE);
 				  response.setStatus(ResponseMessageConstants.STATUS_200);
 			  }
