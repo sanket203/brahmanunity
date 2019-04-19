@@ -28,7 +28,9 @@ public class ResponseMessageConstants {
     
     public static final String FILE_SEPARATOR = "/";
     
-    public static final String NO_PHOTOS = "Photos Not Available";
+    public static final String NO_PHOTOS = "Photos Not Available"; 
+    
+    public static final String NO_NAME_FOUND = "Could not found record by this name";
     
     
 }
