@@ -74,7 +74,7 @@ public class UrlConstants {
 	
 	public static final String SEARCH_BY_NAME = BASE_URL+"/searchByName";
 	
-	public static final String FILTER_BY_AGE = BASE_URL+"/filterByAge";
+	public static final String FILTER_BY_AGE = BASE_URL+"/filterByAge/{pageId}";
 	
 }
 

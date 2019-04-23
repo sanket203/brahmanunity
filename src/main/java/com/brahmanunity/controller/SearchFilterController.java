@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,12 +30,10 @@ public class SearchFilterController {
 	}
 	
 	@GetMapping(UrlConstants.FILTER_BY_AGE)
-	public ResponseEntity<ResponseBuilder> searchByAge(@RequestBody FilterDTO filterDTO) {
-		ResponseBuilder resp = searchService.filterByAge(filterDTO);
+	public ResponseEntity<ResponseBuilder> searchByAge(@RequestBody FilterDTO filterDTO, 
+			                                           @PathVariable("pageId") String pageId) {
+		ResponseBuilder resp = searchService.filterByAge(filterDTO, pageId);
 		return new ResponseEntity<ResponseBuilder>(resp, HttpStatus.OK);
 	}
 	
-	
-	
-
 }

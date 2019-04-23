@@ -7,6 +7,6 @@ public interface SearchFilterService {
 	
 	public ResponseBuilder searchByName(FilterDTO nameFilter);
 	
-	public ResponseBuilder filterByAge(FilterDTO heightFilter);
+	public ResponseBuilder filterByAge(FilterDTO heightFilter, String pageId);
 
 }

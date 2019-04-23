@@ -3,6 +3,9 @@ package com.brahmanunity.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.brahmanunity.constants.ResponseMessageConstants;
@@ -39,7 +42,7 @@ public class SearchFilterServiceImpl implements SearchFilterService {
 	}
 
 	@Override
-	public ResponseBuilder filterByAge(FilterDTO ageFilter) {
+	public ResponseBuilder filterByAge(FilterDTO ageFilter, String pageId) {
 		ResponseBuilder response = new ResponseBuilder();
 		try {
 			  int minYear = Integer.parseInt(ageFilter.getMinAge());
@@ -49,9 +52,11 @@ public class SearchFilterServiceImpl implements SearchFilterService {
 				  gender="female";
 			  } else {
 				gender="male";
-			}
-			  
-			  List<BasicDetailsModel> ageFilteredSearch = basicRepository.getDataByAgeDifference(gender, minYear, maxYear);
+			  }
+			  int page = Integer.parseInt(pageId);
+			  PageRequest pageRequest = PageRequest.of(page, 4, Direction.DESC, "lastLogin");
+			  Pageable pageable = pageRequest;
+			  List<BasicDetailsModel> ageFilteredSearch = basicRepository.getDataByAgeDifference(gender, minYear, maxYear,pageable);
 			  if(ageFilteredSearch.size() > 0) {
 					 response.setObject(ageFilteredSearch);
 				 } else {

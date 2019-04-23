@@ -21,6 +21,6 @@ public interface BasicDetailsRepository extends JpaRepository<BasicDetailsModel,
 	public List<BasicDetailsModel> getSearchedNamedData(@Param("name") String name);
 	
 	@Query("SELECT p FROM BasicDetails p WHERE p.gender= ?1 AND YEAR(p.birthDate) BETWEEN ?2 and ?3")
-	public List<BasicDetailsModel> getDataByAgeDifference(String gender, int minAge, int maxAge);
+	public List<BasicDetailsModel> getDataByAgeDifference(String gender, int minAge, int maxAge, Pageable paging);
 	
 }
